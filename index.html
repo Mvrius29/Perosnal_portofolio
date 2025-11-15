@@ -11,7 +11,7 @@
 
 <body>
     <div class="menu-bar">
-        <div class="center-bar">
+        <div class="center-bar desktop-menu">
             <a href="index.html"><button id="page1">Home</button></a>
             <a href="cv.html"><button id="page2">CV</button></a>
             <a href="projects.html"><button id="page4">Proiects</button></a>
@@ -20,6 +20,22 @@
         <div class="right-bar">
             <span class="date">date</span>
             <span class="hour">hour</span>
+        </div>
+        
+        <button class="hamburger-menu" onclick="toggleMenu()">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </button>
+    </div>
+
+    <div class="mobile-menu-overlay" id="mobile-nav">
+        <button class="close-btn" onclick="toggleMenu()">×</button>
+        <div class="mobile-links">
+            <a href="index.html" onclick="toggleMenu()">Home</a>
+            <a href="cv.html" onclick="toggleMenu()">CV</a>
+            <a href="projects.html" onclick="toggleMenu()">Proiects</a>
+            <a href="contact.html" onclick="toggleMenu()">Contact</a>
         </div>
     </div>
 
@@ -38,7 +54,7 @@
 
                 <p>Feel free to explore the CV and Contact sections to see how I transform academic knowledge into practical applications!</p>
                 
-                </div>
+            </div>
             <div class="home-photo">
                 <img src="Photos_Icons/Image_CV.jpg" alt="Poza personala">
             </div>
@@ -91,6 +107,14 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('mobile-nav');
+            // Comută clasa 'open' pentru a activa stilurile de afișare/ascundere din CSS
+            nav.classList.toggle('open'); 
+        }
+    </script>
 </body>
 
 </html>

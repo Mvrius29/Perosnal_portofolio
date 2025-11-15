@@ -1,26 +1,29 @@
-/* style.css (Versiune finală: Dark Theme cu Gradient Abstract Blur) */
+/* style.css (Versiune finală: Dark Theme cu Gradient Abstract Blur și Meniu Mobil) */
 
 /* VARIABILE GLOBALE */
 :root {
-    --main-bg-color: #0d1117; /* Fundal Principal Întunecat */
-    --primary-color: #232b38; /* Fundal Containere (Opacitate redusă) */
-    --accent-color: #58a6ff; /* Blue for links/accents */
-    --text-color: #c9d1d9; /* Text Deschis */
+    --main-bg-color: #0d1117; 
+    --primary-color: #232b38; 
+    --accent-color: #58a6ff; 
+    --text-color: #c9d1d9; 
+    --secondary-text-color: #8b949e;
+    --border-color: #30363d;
     --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --transition-speed: 0.3s;
 }
 
-body {
-    /* REVENIRE LA TEMA ÎNTUNECATĂ */
-    background-color: #0d1117; 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    /* NOU: GRADIENT ABSTRACT (Folosim o imagine de fundal mare și fixă sau un gradient radial complex) */
-    /* Această secțiune simulează gradientul abstract din imagine */
+body {
+    background-color: #0d1117; 
     background-image: radial-gradient(circle at 75% 40%, rgba(138, 43, 226, 0.4), rgba(13, 17, 23, 0.9)),
                       radial-gradient(circle at 25% 65%, rgba(0, 191, 255, 0.3), rgba(13, 17, 23, 0.9));
-    background-size: cover; /* Asigură că gradientul acoperă tot */
-    background-attachment: fixed; /* Poate îmbunătăți aspectul pe scroll */
-
+    background-size: cover; 
+    background-attachment: fixed; 
     color: var(--text-color);
     font-family: var(--font-stack);
     margin: 0;
@@ -32,17 +35,28 @@ body {
     flex-direction: column;
 }
 
-/* -------------------- MENU BAR STYLING (PĂSTRAT OPAQUE PENTRU CONTRAST) -------------------- */
+/* -------------------- MENU BAR STYLING -------------------- */
 .menu-bar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
-    background-color: var(--primary-color); /* Fundal opac */
+    background-color: var(--primary-color);
     padding: 10px 5%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     position: sticky;
     top: 0;
+    width: 100%;
     z-index: 1000;
+}
+
+/* ASCUNDE meniul desktop pe mobil */
+.desktop-menu {
+    display: none; 
+    gap: 20px;
+}
+.center-bar { 
+    flex-grow: 1;
+    justify-content: flex-start;
 }
 
 .center-bar button {
@@ -54,7 +68,7 @@ body {
     cursor: pointer;
     font-size: 1em;
     border-radius: 5px;
-    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .center-bar button:hover {
@@ -63,7 +77,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Highlight current page button */
 #page1 {
     background-color: var(--accent-color);
     color: var(--main-bg-color);
@@ -73,9 +86,91 @@ body {
 .right-bar {
     font-size: 0.9em;
     color: #8b949e;
+    display: none;
 }
-.right-bar span {
-    margin-left: 10px;
+
+/* --- Meniu Hamburger (Butonul cu 3 puncte) --- */
+.hamburger-menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-left: auto;
+}
+
+.dot {
+    display: block;
+    width: 5px;
+    height: 5px;
+    background-color: var(--text-color);
+    border-radius: 50%;
+}
+
+/* --- Meniu Mobil (Overlay) --- */
+.mobile-menu-overlay {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    background-color: rgba(13, 17, 23, 0.98);
+    overflow-y: hidden;
+    transition: opacity 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.mobile-menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 50px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.mobile-links {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.mobile-links a {
+    padding: 15px;
+    text-decoration: none;
+    font-size: 28px;
+    color: var(--text-color);
+    display: block;
+    transition: color 0.3s, background-color 0.3s;
+    font-weight: bold;
+    border-bottom: 1px solid var(--border-color);
+    margin: 5px 0;
+    width: 300px;
+    max-width: 80vw;
+}
+
+.mobile-links a:hover {
+    color: var(--accent-color);
+    background-color: rgba(88, 166, 255, 0.1);
+    border-radius: 5px;
 }
 
 /* -------------------- MAIN CONTENT STYLING -------------------- */
@@ -89,7 +184,6 @@ body {
     margin: 0 auto;
 }
 
-/* HERO SECTION (Welcome) */
 .container-1 h1 {
     font-size: 2.5em;
     color: var(--accent-color);
@@ -108,7 +202,6 @@ body {
     flex-direction: column;
     gap: 15px;
     padding: 20px;
-    /* SEMI-TRANSPARENT: Permite fundalului blurat să se vadă prin el */
     background-color: rgba(35, 43, 56, 0.75); 
     border-radius: 10px;
     margin-bottom: 40px;
@@ -119,38 +212,41 @@ body {
     font-size: 1.1em;
 }
 
-.faculty-name a {
+.text strong {
+    color: white;
+}
+
+.text h3 {
+    color: var(--accent-color);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.text a {
     color: var(--accent-color) !important;
     text-decoration: none;
     transition: color var(--transition-speed);
 }
-.faculty-name a:hover {
+.text a:hover {
     text-decoration: underline;
 }
 
-/* SOCIAL ICONS (Pastrate pentru a stiliza iconițele din footer) */
-.social-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 15px;
-    margin-top: 10px;
-    justify-content: center;
+.intro-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 20px;
 }
 
-.socials {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.intro-list li {
+    background-color: #1e242c;
+    border-left: 3px solid var(--accent-color);
+    padding: 8px 15px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-size: 0.95em;
 }
 
-.socials:hover {
-    transform: scale(1.2) rotate(5deg);
-    box-shadow: 0 0 15px var(--accent-color);
-}
-
-/* HOME PHOTO */
 .home-photo {
     text-align: center;
     margin-bottom: 40px;
@@ -167,7 +263,6 @@ body {
     transform: rotateY(90deg);
 }
 
-/* Interactivitate la trecerea mouse-ului */
 .home-photo img:hover {
     transform: scale(1.03) rotate(1deg);
     box-shadow: 
@@ -181,7 +276,6 @@ body {
     }
 }
 
-/* BIOGRAPHY SECTION */
 #biography {
     border-bottom: 2px solid var(--accent-color);
     padding-bottom: 5px;
@@ -199,7 +293,6 @@ body {
     text-align: justify;
 }
 
-/* CV BUTTON */
 .cv-button {
     text-align: center;
     margin-top: 40px;
@@ -224,10 +317,9 @@ body {
     transform: scale(1.05);
 }
 
-/* -------------------- FOOTER STYLING -------------------- */
+/* -------------------- FOOTER STYLING CORECTIONS -------------------- */
 
 footer {
-    /* Fundalul rămâne cel dark theme */
     background-color: var(--primary-color);
     color: var(--text-color);
     padding: 20px 5%;
@@ -245,28 +337,90 @@ footer {
     gap: 15px;
 }
 
+/* CONTAINERUL DE SOCIALS */
+.socials-footer {
+    /* Folosim flexbox intern pentru a alinia textul "Connect with me" cu lista de iconițe pe desktop */
+    display: flex;
+    flex-direction: column; /* Stivă pe mobil */
+    align-items: center; /* Centrare pe mobil */
+    gap: 10px;
+    width: 100%; /* Ocupă lățimea completă pe mobil */
+}
+
 .socials-footer span {
-    display: block;
-    margin-bottom: 10px;
     font-weight: bold;
     color: white;
+    /* Eliminat display: block; pentru a permite alinierea Flexbox pe desktop */
+}
+
+.social-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 0;
+}
+
+.socials {
+    width: 30px; /* Redus dimensiunea la 30px pentru a nu fi uriaș */
+    height: 30px;
+    filter: invert(0.8);
+    transition: filter 0.3s, transform 0.3s;
 }
 
 .copyright {
-    font-size: 0.85em;
-    color: #8b949e;
+    font-size: 0.85em; /* L-am păstrat mic */
+    color: var(--secondary-text-color);
+    margin-top: 5px; /* Spațiu între social media și copyright pe mobil */
 }
 
-/* MEDIA QUERIES for Responsiveness */
+/* --- MEDIA QUERIES (Corecții Footer) --- */
+
 @media (max-width: 768px) {
-    .menu-bar {
+    /* Ascunde meniul clasic și afișează hamburgerul */
+    /* ... (stiluri pentru meniul mobil) ... */
+
+    /* Pe mobil, footer-ul rămâne în structura column (default) */
+    .footer-content {
         flex-direction: column;
+    }
+}
+
+@media (min-width: 769px) {
+    /* Setări pentru Desktop */
+    
+    /* Afișează meniul clasic */
+    .desktop-menu {
+        display: flex;
+    }
+    .hamburger-menu {
+        display: none;
+    }
+    .right-bar {
+        display: flex;
+        align-items: center;
         gap: 10px;
     }
-    .biography-content {
-        flex-direction: column;
+    .menu-bar {
+        justify-content: space-between;
     }
-    .container-1 h1 {
-        font-size: 2em;
+    
+    /* CORECȚIE FINALĂ FOOTER */
+    .footer-content {
+        flex-direction: row; /* Pe o singură linie */
+        justify-content: space-between; /* Împinge elementele la capete */
+        align-items: center;
+    }
+    
+    /* Aliniază textul "Connect with me" și lista social media pe aceeași linie */
+    .socials-footer {
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        width: auto;
+    }
+    
+    .socials-footer span {
+        margin: 0;
     }
 }
