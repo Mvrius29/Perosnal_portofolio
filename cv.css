@@ -1,0 +1,262 @@
+/* cv.css */
+
+/* VARIABILE GLOBALE (păstrate constante pentru coerența site-ului) */
+:root {
+    --main-bg-color: #0d1117;
+    --primary-color: #232b38;
+    --accent-color: #58a6ff;
+    --text-color: #c9d1d9;
+    --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --transition-speed: 0.3s;
+}
+
+body {
+    /* NOU: GRADIENT ABSTRACT (aplicat pe fundalul dark theme) */
+    background-color: #0d1117;
+    background-image: radial-gradient(circle at 75% 40%, rgba(138, 43, 226, 0.2), rgba(13, 17, 23, 0.9)),
+                      radial-gradient(circle at 25% 65%, rgba(0, 191, 255, 0.15), rgba(13, 17, 23, 0.9));
+    background-size: cover;
+    background-attachment: fixed;
+    
+    color: var(--text-color);
+    font-family: var(--font-stack);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* -------------------- MENU BAR STYLING (COPIAT DIN STYLE.CSS) -------------------- */
+.menu-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    padding: 10px 5%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.center-bar button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+.center-bar button:hover {
+    background-color: var(--accent-color);
+    color: var(--main-bg-color);
+    transform: translateY(-2px);
+}
+/* Highlight current page button */
+#page2 {
+    background-color: var(--accent-color);
+    color: var(--main-bg-color);
+    font-weight: bold;
+}
+.right-bar {
+    font-size: 0.9em;
+    color: #8b949e;
+}
+.right-bar span {
+    margin-left: 10px;
+}
+
+/* -------------------- CV CONTENT STYLING -------------------- */
+#page2-content {
+    padding: 40px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#title-page2 {
+    font-size: 2.5em;
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 30px;
+    /* Simple underline animation */
+    border-bottom: 3px solid var(--accent-color);
+    display: inline-block;
+    padding-bottom: 5px;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.container {
+    /* Ajustat pentru a fi semi-transparent */
+    background-color: rgba(35, 43, 56, 0.85); 
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    position: relative; 
+    padding-bottom: 70px; 
+}
+
+
+.name-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.cv-head {
+   
+    display: flex; 
+   
+    align-items: center; 
+  
+    justify-content: space-between; 
+   
+    margin-bottom: 25px; 
+
+    padding: 10px 0;
+}
+.name-contact-info, .cv-photo {
+    margin-bottom: 20px;
+}
+
+.cv-photo img {
+    float: right;
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+    border: 3px solid var(--accent-color);
+    /* Simple Animation: pulse the border */
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    from { box-shadow: 0 0 5px var(--accent-color); }
+    to { box-shadow: 0 0 15px var(--accent-color); }
+}
+
+.name {
+    color: white;
+    font-size: 1.8em;
+}
+
+.email, .phone {
+    color: #aeb8c3;
+    font-size: 0.9em;
+}
+
+/* SECTION HEADERS */
+h2 {
+    color: var(--accent-color);
+    border-bottom: 1px solid #3e4c5a;
+    padding-bottom: 5px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+/* LIST STYLING (Experience, Education) */
+.experience-list ul, .edication-list ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+.experience-list li:hover, .edication-list li:hover {
+    color: white;
+    transform: translateX(5px);
+    transition: transform var(--transition-speed), color var(--transition-speed);
+}
+
+.experience-list li {
+    margin-top: 10px;
+    color: #aeb8c3;
+}
+
+.experience-list li u {
+    color: var(--accent-color);
+    font-size: 1.1em;
+}
+
+.description {
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    display: block;
+    border-left: 3px solid #3e4c5a;
+    padding-left: 10px;
+}
+
+/* EDUCATION DETAILS */
+.date-time, .date-type {
+    display: flex;
+    gap: 20px;
+    font-size: 0.9em;
+    color: #8b949e;
+}
+/* SKILLS, LANGUAGES, HOBBIES (Layout using Flexbox) */
+.div-skills, .div-languages, .hobbies-div, .download-pdf {
+    display: inline-block; 
+    vertical-align: top; 
+    padding-right: 2%; 
+}
+
+/* Style for the level in skills/languages */
+.level {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* DOWNLOAD BUTTON */
+.download-pdf {
+    position: absolute; 
+    bottom: 20px; 
+    right: 30px; 
+    width: auto;
+}
+.button-download {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(46, 204, 113, 0.4);
+}
+.button-download:hover {
+    background-color: #27ae60;
+    transform: scale(1.05) translateY(-2px); 
+}
+
+/* MEDIA QUERIES for Responsiveness (CV columns stack) */
+@media (max-width: 900px) {
+    .cv-photo img {
+        float: none;
+        display: block;
+        margin: 0 auto 20px auto;
+    }
+    .name-contact-info {
+        text-align: center;
+    }
+    .div-skills, .div-languages, .hobbies-div, .download-pdf {
+        width: 100% !important;
+        display: block;
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+    .download-pdf {
+        float: none;
+        text-align: center;
+        position: relative; /* Elimină poziționarea absolută pe mobil */
+        bottom: auto;
+        right: auto;
+        margin-top: 10px;
+    }
+    .container {
+        padding-bottom: 30px; /* Reducem spațiul de jos pe mobil */
+    }
+    #title-page2 {
+        width: 80%;
+        margin-left: 10%;
+    }
+}
+

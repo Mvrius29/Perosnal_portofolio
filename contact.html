@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marius Ungureanu's Portfolio - Contact</title>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="icon" href="Photos_Icons/favicon.ico">
+</head>
+
+<body>
+    <div class="menu-bar">
+        <div class="center-bar">
+           <a href="main.html"><button id="page1">Home</button></a>
+            <a href="cv.html"><button id="page2">CV</button></a>
+            <a href="projects.html"><button id="page4">Proiects</button></a>
+            <a href="contact.html"><button id="page3">Contact</button></a>
+        </div>
+        <div class="right-bar">
+            <span class="date">date</span>
+            <span class="hour">hour</span>
+        </div>
+    </div>
+
+    <div id="page3-content">
+        <h1 class="title-page3">Contact</h1>
+        
+        <form action="mailto:ung.marius3@gmail.com" method="GET" enctype="text/plain">
+            
+            <span>Nume:</span><br>
+            <input type="text" id="name" name="Nume:" required><br>
+
+            <span>Email:</span><br>
+            <input type="email" id="email" name="Adresa_Email:" required><br>
+
+            <input type="hidden" name="_subject" value="Solicitare de contact de pe portofoliul web" />
+
+            <span>Mesaj:</span><br>
+            <textarea id="message" name="body" rows="4" required></textarea><br>
+
+            <input type="submit" value="Trimite">
+
+        </form>
+
+    </div>
+</body>
+
+</html>
