@@ -1,6 +1,4 @@
-/* style.css (Versiune finală: Dark Theme cu Gradient Abstract Blur și Meniu Mobil) */
 
-/* VARIABILE GLOBALE */
 :root {
     --main-bg-color: #0d1117; 
     --primary-color: #232b38; 
@@ -49,7 +47,7 @@ body {
     z-index: 1000;
 }
 
-/* ASCUNDE meniul desktop pe mobil */
+
 .desktop-menu {
     display: none; 
     gap: 20px;
@@ -89,7 +87,7 @@ body {
     display: none;
 }
 
-/* --- Meniu Hamburger (Butonul cu 3 puncte) --- */
+
 .hamburger-menu {
     background: none;
     border: none;
@@ -109,7 +107,7 @@ body {
     border-radius: 50%;
 }
 
-/* --- Meniu Mobil (Overlay) --- */
+
 .mobile-menu-overlay {
     height: 100%;
     width: 100%;
@@ -337,20 +335,20 @@ footer {
     gap: 15px;
 }
 
-/* CONTAINERUL DE SOCIALS */
+
 .socials-footer {
-    /* Folosim flexbox intern pentru a alinia textul "Connect with me" cu lista de iconițe pe desktop */
+   
     display: flex;
-    flex-direction: column; /* Stivă pe mobil */
-    align-items: center; /* Centrare pe mobil */
+    flex-direction: column; 
+    align-items: center; 
     gap: 10px;
-    width: 100%; /* Ocupă lățimea completă pe mobil */
+    width: 100%; 
 }
 
 .socials-footer span {
     font-weight: bold;
     color: white;
-    /* Eliminat display: block; pentru a permite alinierea Flexbox pe desktop */
+
 }
 
 .social-list {
@@ -362,34 +360,31 @@ footer {
 }
 
 .socials {
-    width: 30px; /* Redus dimensiunea la 30px pentru a nu fi uriaș */
+    width: 30px; 
     height: 30px;
     filter: invert(0.8);
     transition: filter 0.3s, transform 0.3s;
 }
 
 .copyright {
-    font-size: 0.85em; /* L-am păstrat mic */
+    font-size: 0.85em; 
     color: var(--secondary-text-color);
-    margin-top: 5px; /* Spațiu între social media și copyright pe mobil */
+    margin-top: 5px; 
 }
 
-/* --- MEDIA QUERIES (Corecții Footer) --- */
+
 
 @media (max-width: 768px) {
-    /* Ascunde meniul clasic și afișează hamburgerul */
-    /* ... (stiluri pentru meniul mobil) ... */
-
-    /* Pe mobil, footer-ul rămâne în structura column (default) */
+    
     .footer-content {
         flex-direction: column;
     }
 }
 
 @media (min-width: 769px) {
-    /* Setări pentru Desktop */
     
-    /* Afișează meniul clasic */
+    
+
     .desktop-menu {
         display: flex;
     }
@@ -405,14 +400,14 @@ footer {
         justify-content: space-between;
     }
     
-    /* CORECȚIE FINALĂ FOOTER */
+   
     .footer-content {
-        flex-direction: row; /* Pe o singură linie */
-        justify-content: space-between; /* Împinge elementele la capete */
+        flex-direction: row; 
+        justify-content: space-between; 
         align-items: center;
     }
     
-    /* Aliniază textul "Connect with me" și lista social media pe aceeași linie */
+   
     .socials-footer {
         flex-direction: row;
         align-items: center;

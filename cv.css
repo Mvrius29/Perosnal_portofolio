@@ -1,6 +1,6 @@
-/* cv.css */
 
-/* VARIABILE GLOBALE (păstrate constante pentru coerența site-ului) */
+
+
 :root {
     --main-bg-color: #0d1117;
     --primary-color: #232b38;
@@ -11,7 +11,7 @@
 }
 
 body {
-    /* NOU: GRADIENT ABSTRACT (aplicat pe fundalul dark theme) */
+    /* GRADIENT  */
     background-color: #0d1117;
     background-image: radial-gradient(circle at 75% 40%, rgba(138, 43, 226, 0.2), rgba(13, 17, 23, 0.9)),
                       radial-gradient(circle at 25% 65%, rgba(0, 191, 255, 0.15), rgba(13, 17, 23, 0.9));
@@ -126,7 +126,7 @@ body {
     height: auto;
     border-radius: 50%;
     border: 3px solid var(--accent-color);
-    /* Simple Animation: pulse the border */
+
     animation: pulse 2s infinite alternate;
 }
 
@@ -184,27 +184,26 @@ h2 {
     padding-left: 10px;
 }
 
-/* EDUCATION DETAILS */
+
 .date-time, .date-type {
     display: flex;
     gap: 20px;
     font-size: 0.9em;
     color: #8b949e;
 }
-/* SKILLS, LANGUAGES, HOBBIES (Layout using Flexbox) */
+
 .div-skills, .div-languages, .hobbies-div, .download-pdf {
     display: inline-block; 
     vertical-align: top; 
     padding-right: 2%; 
 }
 
-/* Style for the level in skills/languages */
 .level {
     color: var(--accent-color);
     font-weight: bold;
 }
 
-/* DOWNLOAD BUTTON */
+
 .download-pdf {
     position: absolute; 
     bottom: 20px; 
@@ -227,7 +226,7 @@ h2 {
     transform: scale(1.05) translateY(-2px); 
 }
 
-/* MEDIA QUERIES for Responsiveness (CV columns stack) */
+
 @media (max-width: 900px) {
     .cv-photo img {
         float: none;
@@ -246,13 +245,13 @@ h2 {
     .download-pdf {
         float: none;
         text-align: center;
-        position: relative; /* Elimină poziționarea absolută pe mobil */
+        position: relative; 
         bottom: auto;
         right: auto;
         margin-top: 10px;
     }
     .container {
-        padding-bottom: 30px; /* Reducem spațiul de jos pe mobil */
+        padding-bottom: 30px; 
     }
     #title-page2 {
         width: 80%;
